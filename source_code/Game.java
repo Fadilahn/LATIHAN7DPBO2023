@@ -36,7 +36,9 @@ public class Game extends Canvas implements Runnable
     
     /* Animation-related attributes. */
     private boolean startCounting = false;
+    private boolean isCollided = false;
     private int score = 0;
+    private int point = 0;
     private int oldScore = 0;
     private int coin = 0;
     private int pointDelay = 0;
@@ -101,6 +103,16 @@ public class Game extends Canvas implements Runnable
     public void setScore(int score)
     {
         this.score += score;
+    }
+
+    /* Game Point. */
+
+    public int getPoint(){
+        return point;
+    }
+
+    public void setPoint(int point){
+        this.point = point;
     }
     
     /* Game coin. */
@@ -232,15 +244,18 @@ public class Game extends Canvas implements Runnable
                     // collision detected
                     if (obj instanceof Pipe) {
                         // do something if player collides with a pipe
-                        this.setScore(-1);
-                        ((Player) player).sumGotPoint(-1);;
+                        if(!isCollided){
+                            this.setScore(-1);
+                            ((Player) player).sumGotPoint(-1);
+                            isCollided = true;
+                        }
 
                     } else if (obj instanceof Coin) {
                         // do something if player collides with a coin
-                        this.setScore(+10);
+                        this.setScore(+5);
                         this.setCoin(+1);
-                        ((Player) player).sumGotPoint(+10);;
-                        System.out.println("+"+10);
+                        ((Player) player).sumGotPoint(+5);;
+                        System.out.println("+"+5);
 
                         // set random position
                         obj.setX((int) (Math.random() * width));
@@ -262,6 +277,8 @@ public class Game extends Canvas implements Runnable
         handler.loop();
         if(this.running)
         {   
+//            setScore(this.point);
+            
             counter++;
             pointDelay++;
             if(startCounting)
@@ -293,7 +310,8 @@ public class Game extends Canvas implements Runnable
                     
                     // set got point with delay
                     if(pointDelay > 20){
-                        ((Player) object).setGotPoint(0);;
+                        ((Player) object).setGotPoint(0);
+                        isCollided = false;
                     }
                     
                     // check collision

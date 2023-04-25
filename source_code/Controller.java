@@ -22,6 +22,15 @@ public class Controller extends KeyAdapter implements KeyListener
     private Game game;
     private Handler handler;
     
+    /*
+     * move key declaration:
+     * right = 1
+     * left = 2
+     * top = 3
+     * bottom = 4
+     */
+    private int move;
+    
     /**
      * Constructor.
      */
@@ -67,6 +76,20 @@ public class Controller extends KeyAdapter implements KeyListener
     {
         this.handler = handler;
     }
+
+    /* Set point */
+
+    public void keyMovePoint(int mv){
+
+        // check move
+        if(this.move != mv){
+            game.setPoint(1);
+            this.move = mv;
+        }
+        else{
+            game.setPoint(0);
+        }
+    }
     
     /**
      * Public methods.
@@ -76,7 +99,7 @@ public class Controller extends KeyAdapter implements KeyListener
     @Override
     public synchronized void keyPressed(KeyEvent e)
     {
-        System.out.println("Pressed");
+//        System.out.println("Pressed");
         
         // Get key code (what key that pressed?).
         int key = e.getKeyCode();
@@ -98,29 +121,32 @@ public class Controller extends KeyAdapter implements KeyListener
             
             // Set the object and do the handling.
             GameObject temp = handler.get(i);
-            if((key == KeyEvent.VK_SPACE || key == KeyEvent.VK_W) || (key == KeyEvent.VK_UP)) {
-                // set score if jumping false
-                if(((Player) temp).getJumping() == false){
-                    game.setScore(+1);
-                }
-                
-                // set cel y for jum to hight
-                temp.setVelY(-15);
-                ((Player) temp).setJumping(true);
+            if((key == KeyEvent.VK_S) || (key == KeyEvent.VK_DOWN))
+            {
+                // Move down.
+                temp.setVelY(+5);
+                keyMovePoint(4);
+            }
+            if((key == KeyEvent.VK_W) || (key == KeyEvent.VK_UP))
+            {
+                // Move up.
+                temp.setVelY(-5);
+                keyMovePoint(3);
             }
             if((key == KeyEvent.VK_A) || (key == KeyEvent.VK_LEFT))
             {
                 // Move left.
                 temp.setVelX(-5);
-                game.setScore(+1);
+                keyMovePoint(2);
             }
             if((key == KeyEvent.VK_D) || (key == KeyEvent.VK_RIGHT))
             {
                 // Move right.
                 temp.setVelX(+5);
-                game.setScore(+1);
-
+                keyMovePoint(1);
             }
+            
+            game.setScore(game.getPoint());
         }
     }
     
@@ -149,16 +175,30 @@ public class Controller extends KeyAdapter implements KeyListener
             }
             
             // Set the object and do the handling.
-            GameObject temp = handler.get(i);            
+            GameObject temp = handler.get(i);
+            if((key == KeyEvent.VK_S) || (key == KeyEvent.VK_DOWN))
+            {
+                // Stop from being moved down.
+                temp.setVelY(0);
+                game.setPoint(0);
+            }
+            if((key == KeyEvent.VK_W) || (key == KeyEvent.VK_UP))
+            {
+                // Stop from being moved up.
+                temp.setVelY(0);
+                game.setPoint(0);
+            }
             if((key == KeyEvent.VK_A) || (key == KeyEvent.VK_LEFT))
             {
                 // Stop from being moved left.
                 temp.setVelX(0);
+                game.setPoint(0);
             }
             if((key == KeyEvent.VK_D) || (key == KeyEvent.VK_RIGHT))
             {
                 // Stop from being moved right.
                 temp.setVelX(0);
+                game.setPoint(0);
             }
         }
     }

@@ -20,7 +20,6 @@ public class Player extends GameObject
     // atribute
     private int speed = 0;
     private int gotPoint = 0;
-    protected boolean isJumping = false;
 
     /**
      * Constructor.
@@ -49,16 +48,6 @@ public class Player extends GameObject
     /**
      * Method
      */
-    
-    /* isJumping */
-
-    public void setJumping(boolean jump){
-        this.isJumping = jump;
-    }
-
-    public boolean getJumping(){
-        return isJumping;
-    }
 
     public void setGotPoint(int point){
         this.gotPoint = point;
@@ -113,27 +102,7 @@ public class Player extends GameObject
     {
         // Initialize velocity, so object can move.
         this.x += this.velX;
-        
-        // check for jumping
-        if(this.isJumping == true && this.velY < 0){
-            
-            // jumping calculate with pos y
-            this.velY += grafity;
-            
-            // set speed if done
-            if(this.velY >= 0){
-                this.isJumping = false;
-                speed = 0;
-            }
-            
-            this.y += this.velY;
-        }
-        else{
-            this.y += speed;
-            if(speed <= 10){
-                speed += grafity;
-            }
-        }
+        this.y += this.velY;
 
         // Initialize player bound, so it won't get offset the display.
         x = Game.clamp(x, 0, (Game.width - 50));
