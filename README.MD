@@ -1,5 +1,5 @@
 # **LP7C2DPBO2023**
-Sesuai dengan soal latihan [**Modul 7**](https://docs.google.com/document/d/1P8V9BdTXqdjToJBzjmeKXMqFi6mfpaFzVSQgIvZfatE/edit)
+Sesuai dengan soal latihan [**Modul 7**](https://docs.google.com/document/d/1P8V9BdTXqdjToJBzjmeKXMqFi6mfpaFzVSQgIvZfatE/edit). Untuk file hasil tugas .jar nya yang ini [lp7.jar](lp7.jar)
 
 ![Alt text](screenshot/Screenshot%202023-04-22%20184641.png)
 ---
