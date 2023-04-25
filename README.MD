@@ -46,8 +46,8 @@ Tujuan program game ini untuk mengumpulkan score sebanyak-banyaknya dan menghind
 Saat program diijalankan sistem akan menampilkan frame pada layar. lalu frame akan menampilkan background dengan tulisan score dan coin yang didapatkan, sekaligus menampilkan object `player` (burung) dan `coin` (Logo UPI). Setiap waktu, sistem akan menambahkan object `pipa` (pipe) pada frame yang setiap waktunya akan bergerak terus kekiri sebagai rintangan player.
 
 Player dapat berpindah `keatas`, `kebawah`, `kekiri`, dan `kekanan`.  
-Kita dapat menggerakan player dengan [**`Controller`**](#controller)  
-player dapat mendapatkan point dengan [**`Score`**](#score)
+Kita dapat menggerakan player dengan [**Controller**](#controller)  
+player dapat mendapatkan point dengan [**Score**](#score)
 
 #### **Score**
 - control key `keatas` / `kebawah` / `kekanan` / `kekiri` -> `+1` point (sesuai dengan spesifikasi tugas)
