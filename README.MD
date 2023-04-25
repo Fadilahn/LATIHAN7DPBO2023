@@ -56,6 +56,8 @@ player dapat mendapatkan point dengan [**Score**](#score)
 
 setelah coin didapatkan maka koin akan berpindah secara random sesuai dengan spesifikasi bonus tugas
 
+***NOTE :*** *untuk update game lanjutannya (jump + grafity) bisa diakses* [Flappy-Bird.jar](Flappy-Bird.jar)
+
 ## **Dokumentasi Execute Program**
 
 ![Alt text](screenshot/Screenshot%202023-04-22%20184641.png)
